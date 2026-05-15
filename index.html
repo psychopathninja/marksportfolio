@@ -1,59 +1,222 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+  <meta name="description" content="Redirecting to Mark Vincent Faith Item's new portfolio." />
+  <title>Redirecting...</title>
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at center, #1f2937 0%, #020617 70%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    .scene {
+      text-align: center;
+      padding: 24px;
+    }
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="myportfolio">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    .paper {
+      width: min(90vw, 520px);
+      background: #f8fafc;
+      color: #111827;
+      padding: 48px 32px;
+      border-radius: 18px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      position: relative;
+      transform-origin: center;
+      animation: dramaticExit 3.2s ease-in-out forwards;
+    }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    .paper::before,
+    .paper::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      pointer-events: none;
+    }
 
-  <title>myportfolio</title>
-  <link rel="manifest" href="manifest.json">
+    .paper::before {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.55),
+        transparent 40%,
+        rgba(0, 0, 0, 0.12)
+      );
+      mix-blend-mode: multiply;
+      animation: wrinkle 3.2s ease-in-out forwards;
+    }
 
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "3687009479";
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
+    .paper::after {
+      background:
+        linear-gradient(90deg, transparent 20%, rgba(0,0,0,0.08) 21%, transparent 22%),
+        linear-gradient(45deg, transparent 35%, rgba(0,0,0,0.06) 36%, transparent 38%),
+        linear-gradient(-45deg, transparent 55%, rgba(0,0,0,0.07) 56%, transparent 58%);
+      opacity: 0;
+      animation: crease 3.2s ease-in-out forwards;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 6vw, 48px);
+      letter-spacing: -1px;
+    }
+
+    p {
+      margin: 8px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .small {
+      margin-top: 24px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .dust {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 999px;
+      opacity: 0;
+      animation: dust 3.2s ease-out forwards;
+    }
+
+    .dust:nth-child(1) { left: 20%; top: 45%; animation-delay: 1.6s; }
+    .dust:nth-child(2) { left: 35%; top: 40%; animation-delay: 1.7s; }
+    .dust:nth-child(3) { left: 55%; top: 50%; animation-delay: 1.8s; }
+    .dust:nth-child(4) { left: 70%; top: 42%; animation-delay: 1.9s; }
+    .dust:nth-child(5) { left: 80%; top: 55%; animation-delay: 2s; }
+
+    @keyframes dramaticExit {
+      0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+        filter: blur(0);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      35% {
+        transform: scale(1.03) rotate(-1deg);
+      }
+
+      55% {
+        transform: scale(0.85) rotate(4deg) skew(-8deg, 4deg);
+        clip-path: polygon(8% 4%, 91% 0, 98% 87%, 12% 96%);
+      }
+
+      75% {
+        transform: scale(0.32) rotate(18deg) skew(18deg, -12deg);
+        opacity: 0.75;
+        filter: blur(1px);
+        clip-path: polygon(30% 8%, 78% 18%, 68% 72%, 24% 80%);
+      }
+
+      100% {
+        transform: scale(0.02) rotate(55deg) skew(35deg, -25deg);
+        opacity: 0;
+        filter: blur(8px);
+        clip-path: polygon(45% 40%, 55% 42%, 54% 54%, 44% 52%);
+      }
+    }
+
+    @keyframes wrinkle {
+      0% { opacity: 0; }
+      40% { opacity: 0.3; }
+      70% { opacity: 0.75; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes crease {
+      0% { opacity: 0; }
+      45% { opacity: 0.2; }
+      70% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes dust {
+      0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 0;
+      }
+
+      30% {
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translate(
+          calc((50vw - 100px) * var(--x, 1)),
+          -180px
+        ) scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    .dust:nth-child(1) { --x: -1; }
+    .dust:nth-child(2) { --x: -0.5; }
+    .dust:nth-child(3) { --x: 0.2; }
+    .dust:nth-child(4) { --x: 0.7; }
+    .dust:nth-child(5) { --x: 1; }
+  </style>
 </head>
+
 <body>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+  <span class="dust"></span>
+
+  <main class="scene">
+    <section class="paper">
+      <h1>Portfolio Archived</h1>
+      <p>This old portfolio has officially been placed back in the baul.</p>
+      <p>Redirecting you to Mark’s new portfolio...</p>
+      <p class="small">Goodbye, Flutter era. Goodbye, Muhammad Hamza.</p>
+    </section>
+  </main>
+
   <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
+    const newPortfolio = "https://marksportfolio-phi.vercel.app/";
+
+    // Remove old Flutter service worker/cache para hindi stubborn ang old build.
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        registrations.forEach(function(registration) {
+          registration.unregister();
+        });
       });
-    });
+    }
+
+    if ("caches" in window) {
+      caches.keys().then(function(names) {
+        names.forEach(function(name) {
+          caches.delete(name);
+        });
+      });
+    }
+
+    setTimeout(function() {
+      window.location.href = newPortfolio;
+    }, 3400);
   </script>
 </body>
 </html>
